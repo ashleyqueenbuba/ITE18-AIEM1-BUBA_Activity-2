@@ -1,0 +1,208 @@
+/* ==========================================================
+   RETRO INTERNET THEME  (circa 1998)
+   Global tokens + shared "window" look used by all components
+   ========================================================== */
+
+:root {
+  --teal: #008080;
+  --silver: #c0c0c0;
+  --navy: #000080;
+  --sky: #1084d0;
+  --white: #ffffff;
+  --shadow: #404040;
+  --black: #000000;
+  --font-body: Tahoma, Verdana, Geneva, sans-serif;
+  --font-head: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--black);
+  background-color: var(--teal);
+  background-image: radial-gradient(#006666 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0 0 8px;
+}
+
+a {
+  color: #0000ee;
+}
+
+a:visited {
+  color: #551a8b;
+}
+
+/* ---------- layout ---------- */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.page > * + *,
+.stack > * + * {
+  margin-top: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ---------- the classic beveled window ---------- */
+.win {
+  background: var(--silver);
+  border: 2px solid;
+  border-color: var(--white) var(--shadow) var(--shadow) var(--white);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+.win-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 6px;
+  background: linear-gradient(90deg, var(--navy), var(--sky));
+  color: var(--white);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.win-controls {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.win-controls span {
+  display: inline-block;
+  width: 16px;
+  height: 14px;
+  background: var(--silver);
+  border: 1px solid;
+  border-color: var(--white) var(--shadow) var(--shadow) var(--white);
+  color: var(--black);
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+}
+
+.win-body {
+  padding: 12px;
+}
+
+/* inset / sunken panel */
+.sunken {
+  background: var(--white);
+  border: 2px solid;
+  border-color: var(--shadow) var(--white) var(--white) var(--shadow);
+}
+
+/* ---------- decoration ---------- */
+.rainbow-rule {
+  height: 6px;
+  border: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff0000 0 40px,
+    #ffff00 40px 80px,
+    #00ff00 80px 120px,
+    #00ffff 120px 160px,
+    #0000ff 160px 200px,
+    #ff00ff 200px 240px
+  );
+}
+
+.blink {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink {
+    animation: none;
+  }
+}
+
+/* ---------- DARK MODE ---------- */
+body.dark {
+  color: #e8e8f0;
+  background-color: #0b0b18;
+  background-image: radial-gradient(#1c1c3a 1px, transparent 1px);
+}
+
+body.dark a { color: #8ab4ff; }
+body.dark a:visited { color: #c9a6ff; }
+
+body.dark .win {
+  background: #2b2b3d;
+  border-color: #6a6a85 #08080f #08080f #6a6a85;
+}
+
+body.dark .win-title {
+  background: linear-gradient(90deg, #2a0a5e, #6a2fb0);
+}
+
+body.dark .win-controls span {
+  background: #3b3b52;
+  color: #fff;
+  border-color: #6a6a85 #08080f #08080f #6a6a85;
+}
+
+body.dark .sunken,
+body.dark .info-card__text,
+body.dark .student-card__details {
+  background: #14141f;
+  border-color: #08080f #6a6a85 #6a6a85 #08080f;
+}
+
+body.dark .student-card__avatar { background: #1d1d2e; }
+body.dark .student-card__name { color: #9ab8ff; }
+
+body.dark .app-header__link,
+body.dark .app-header__link:visited {
+  background: #3b3b52;
+  color: #fff;
+  border-color: #6a6a85 #08080f #08080f #6a6a85;
+}
+
+body.dark .app-header__link:hover { background: #4b4b66; }
+
+body.dark .app-header__link.is-active {
+  background: #5b3fa0;
+  border-color: #08080f #6a6a85 #6a6a85 #08080f;
+}
+
+body.dark .app-footer__construction { color: #ff7a7a; }
